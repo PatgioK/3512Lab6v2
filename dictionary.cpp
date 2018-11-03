@@ -49,8 +49,9 @@ string dictionary::findWord(string word) {
 
 void dictionary::newWord(string word) {
     string def, input;
-    if(dict.find(word) == dict.end()) {
-        cout << "word not found";
+    if(dict.find(word) != dict.end()) {
+        cout << "word already exists";
+        return;
     }
     cout << "enter new definition";
     cin.clear();
@@ -58,10 +59,6 @@ void dictionary::newWord(string word) {
     getline(cin, def);
     dict.insert(pair<string, string>(word, def));
     ofstream out("../dictionary.txt", std::ios_base::app);
-    out << word << ": " << def;
+    out << "\n" << word << "; " << def;
     out.close();
-}
-
-map<string,string> dictionary::getDict() {
-    return this->dict;
 }
