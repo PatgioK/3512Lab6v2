@@ -6,20 +6,10 @@
 #include <iostream>
 #include <sstream>
 
-/*dictionary::dictionary() {
-    fstream fstr;
-    string str, key, value;
-    fstr.open("../dictionary.txt");
-    while(fstr.good()){
-        getline(fstr, str);
-        stringstream ss(str);
-        while(ss.good()){
-            getline(ss, key, ';');
-            getline(ss, value);
-        }
-    }
-}*/
-
+/* dictionary constructor,
+ * opens a file called dictionary.txt in the root folder, parses the text
+ * and adds it to the dictionary map
+ * */
 dictionary::dictionary() {
     string key, value;
     fstream fstream1;
@@ -28,10 +18,14 @@ dictionary::dictionary() {
 
     while(getline(getline(fstream1, key, ';') >> std::ws, value))
         dict.insert(pair<string,string>(key, value));
-
+    fstream.close();
 }
 
-
+/*This function iterates through the dictionary map and prints out key
+ * and definitions
+*@param - no param
+*@return - void
+*/
 void dictionary::print(){
     map<string,string>::iterator iterator1;
     for(iterator1 = dict.begin(); iterator1 != dict.end(); ++iterator1) {
@@ -39,6 +33,10 @@ void dictionary::print(){
     }
 }
 
+/*This function takes a string and searches the map to find a match
+*@param - word - a string to be searched for in the map
+*@return - returns a string of either the definition or not found.
+*/
 string dictionary::findWord(string word) {
     if(dict.find(word) == dict.end()) {
         return "word not found";
@@ -47,6 +45,11 @@ string dictionary::findWord(string word) {
     return def;
 }
 
+/*This function takes a word, checks if its in the map, and asks
+ * for a definition if not already in the map
+*@param - word - string word to find and/or add a definition for
+*@return - void
+*/
 void dictionary::newWord(string word) {
     string def, input;
     if(dict.find(word) != dict.end()) {
