@@ -57,7 +57,7 @@ void dictionary::newWord(string word) {
     cin.ignore();
     getline(cin, def);
     dict.insert(pair<string, string>(word, def));
-    ofstream out("../Dictionary.txt", std::ios_base::app);
+    ofstream out("../dictionary.txt", std::ios_base::app);
     out << word << ": " << def;
     out.close();
 }

@@ -1,0 +1,2 @@
+cat: a feline friend
+dog: a canine friend
