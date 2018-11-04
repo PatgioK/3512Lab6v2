@@ -18,7 +18,7 @@ dictionary::dictionary() {
 
     while(getline(getline(fstream1, key, ';') >> std::ws, value))
         dict.insert(pair<string,string>(key, value));
-    fstream.close();
+    fstream1.close();
 }
 
 /*This function iterates through the dictionary map and prints out key
